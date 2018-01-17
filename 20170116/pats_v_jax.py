@@ -36,7 +36,12 @@ ax1.axhline(y=int(pats.replace(0,np.NaN)[['TotYdO']].mean()), color='g', linesty
 ax1.axhline(y=int(jax.replace(0,np.NaN)[['TotYdO']].mean()), color='g', linestyle=':')
 ax1.tick_params('y', colors='b')
 ax1.set_xticks(xvals)
-ax1.legend(bbox_to_anchor=(.7, .75), ncol=2)
+ax1.set_yticks(range(100, 600, 150))
+ax1.set_ylim(100, 600)
+ax1.legend(bbox_to_anchor=(.7, .65), ncol=2)
+ax1.annotate('mean', xy=(.5, int(pats.replace(0,np.NaN)[['TotYdO']].mean()) ), 
+            xytext=(.5, 150),
+            arrowprops=dict(facecolor='black', shrink=0.15))
 
 # define axis 2
 ax2.plot(pats[['Week']], pats[['TotYdD']], 'r-', label='Pats')
@@ -47,7 +52,9 @@ ax2.tick_params('y', colors='r')
 ax2.set_ylabel('Total Yards Defense', color='r')
 ax2.legend(bbox_to_anchor=(.65, 1), ncol=2)
 ax2.set_xticks(xvals)
-ax2.set_ylabel('Week')
+ax2.set_yticks(range(100, 600, 150))
+ax2.set_ylim(100, 600)
+ax2.set_xlabel('Week')
 
 plt.tight_layout()
 now = datetime.datetime.now()
